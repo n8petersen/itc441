@@ -85,9 +85,17 @@ https://fritzing.org/download/
 *View Appendix 4 for user view image*  
 ### Component View
 1. What are the different parts and pieces of the system?
+   - Parts are listed in the *Materials* section
 2. How does each component of the system interact?
+   - Each component interacts with the Microcontroller, which receives HTTP requests from the user
+   - As requests are processed, they either turn on/off LED's, or start the automatic timer
 3. What parameters are passed between components? What connections, ports, protocols, etc are used for these interactions?
+   - HTTP (port 80) is used to send/receive requests to control the system
+   - The user can control the microcontroller over network, since the controller is connected to the designated WiFi AP.
 4. What standards (APIs, taxonomy, etc) are utilized for these interactions?
+   - This is a very basic API, there is logic that parses the request header and checks for specific text
+   - It is not very robust, it just checks that the text is there. For example, if you put "redd" in the url, it would still process as "red"
+   - If you put "greenyellowred" it would process 'red' since it is the first if statement to check for, and so forth.
 
 *View Appendix 3 for circuit diagram*  
 ## Certification of Work
