@@ -114,8 +114,8 @@ I, Nathan Petersen, certify that this Lab Submission represents my own work. Any
 1. Please estimate the total time you spent on this lab and report.
 	- 0.5 hour soldering pins and wiring up board
 	- 3.5 hours coding 
-	- 1 hour on writeup
-	- **5 hours total**
+	- 2 hours on writeup
+	- **6 hours total**
 ## Appendix
 ### Appendix 1: System Flowchart
 <img src='./_images/Lab 2 - Flowchart.png' width=700></img>    
