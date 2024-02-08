@@ -122,13 +122,13 @@ I, Nathan Petersen, certify that this Lab Submission represents my own work. Any
 ### Appendix 2: State Diagram
 <img src='./_images/Lab 2 - State Diagram.png' width=600></img>    
 ### Appendix 3: Circuit Diagram
-<img src='./_images/Stoplight-Wemos_bb.png' width=600></img>  
+<img src='./_images/Lab 2 - Circuit Diagram.png' width=600></img>  
 ### Appendix 4: Website Controller
-<img src='./_images/Pasted image 20240207230457.png' width=400></img>    
+<img src='./_images/Lab 2 - Website.png' width=400></img>    
 ### Appendix 5: Serial Monitor Output Example
-<img src='./_images/Pasted image 20240207230512.png' width=400></img>  
+<img src='./_images/Lab 2 - Serial Output.png' width=400></img>  
 ### Appendix 6: Pictures
-<img src='./_images/Pasted image 20240207224836.png' width=500></img>  
+<img src='./_images/Lab 2 - Image.png' width=500></img>  
 ### Appendix 7: Code
 https://github.com/n8petersen/itc441/tree/main/Lab%202%20-%20Arduino%20Stoplight  
 ``` C++
