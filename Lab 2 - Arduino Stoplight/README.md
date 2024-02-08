@@ -128,7 +128,7 @@ I, Nathan Petersen, certify that this Lab Submission represents my own work. Any
 ### Appendix 5: Serial Monitor Output Example
 <img src='./_images/Lab 2 - Serial Output.png' width=400></img>  
 ### Appendix 6: Pictures
-<img src='./_images/Lab 2 - Image.png' width=500></img>  
+<img src='./_images/Lab 2 - image.png' width=500></img>  
 ### Appendix 7: Code
 https://github.com/n8petersen/itc441/tree/main/Lab%202%20-%20Arduino%20Stoplight  
 ``` C++
