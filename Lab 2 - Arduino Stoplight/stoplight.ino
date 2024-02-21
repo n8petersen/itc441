@@ -1,6 +1,6 @@
 #include <ESP8266WiFi.h> 
 
-const char* wifiSSID = "natepete";
+const char* wifiSSID = "nathan";
 const char* wifiPSK  = "ilikepizza123";
 
 WiFiServer server(80);
