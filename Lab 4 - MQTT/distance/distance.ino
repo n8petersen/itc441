@@ -60,6 +60,7 @@ void setup() {
   mqttClient.setCallback(callback);
   mqttClient.connect(host);
   mqttClient.subscribe(ledTopic);
+  mqttClient.subscribe(doorTopic);
   Serial.println(mqttClient.state());
 
   mqttClient.publish("/debug", "Sensor Connected");
@@ -71,31 +72,33 @@ void loop() {
 
   mqttClient.loop();
 
-  // Get the distance using the NewPing library
-  float distance = (sonar.ping() / 2) * 0.0343;
+  if (garageOpen) {
+    // Get the distance using the NewPing library
+    float distance = (sonar.ping() / 2) * 0.0343;
 
-  // print distance for debugging
-  // Serial.print("Dist: ");
-  // Serial.print(distance);
-  // Serial.println(" cm");
+    // print distance for debugging
+    // Serial.print("Dist: ");
+    // Serial.print(distance);
+    // Serial.println(" cm");
 
-  if (green > distance && distance >= yellow) {
-    newColor = "green";
-  }
+    if (green > distance && distance >= yellow) {
+      newColor = "green";
+    }
+    else if (yellow > distance && distance >= red) {
+      newColor = "yellow";
+    }
+    else if (red > distance && distance >= blink_red) {
+      newColor = "red";
+    }
+    else if (blink_red > distance && distance > 0) {
+      newColor = "blink";
+    }
+    else {
+      newColor = "off";
+    }
+    delay(100);
 
-  else if (yellow > distance && distance >= red) {
-    newColor = "yellow";
-  }
-
-  else if (red > distance && distance >= blink_red) {
-    newColor = "red";
-  }
-
-  else if (blink_red > distance && distance > 0) {
-    newColor = "blink";
-  }
-
-  else {
+  } else {
     newColor = "off";
   }
 
@@ -103,8 +106,6 @@ void loop() {
     mqttClient.publish("/lights", newColor);
     currColor = newColor;
   }
-
-  delay(100);
 }
 
 void callback(char* topicChar, byte* payload, unsigned int length) {
@@ -118,15 +119,17 @@ void callback(char* topicChar, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
-  Serial.println(message); 
+  Serial.println(message);
 
   if (topic == (String)doorTopic) {
     if (message == "open") {
       garageOpen = true;
+      // Serial.println("Garage opened"); // Used for debugging
     }
 
     else {
-      garageOpen = true;
+      garageOpen = false;
+      // Serial.println("Garage closed"); // Used for debugging
     }
   }
 }
