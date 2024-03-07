@@ -42,9 +42,10 @@ void setup() {
   //  ## Connect to MQTT
   Serial.println("Connecting to MQTT.");
   mqttClient.setServer(server, 1883);
-  // mqttClient.setCallback(callback);
+  mqttClient.setCallback(callback);
   mqttClient.connect(host);
   mqttClient.subscribe(ledTopic);
+  mqttClient.subscribe(doorTopic);
   Serial.println(mqttClient.state());
 
   mqttClient.publish("/debug", "Garage Connected");
@@ -53,6 +54,7 @@ void setup() {
 }
 
 void loop() {
+  mqttClient.loop();
   // Read the state of the switch
   newState = digitalRead(switchPin);
 
@@ -72,4 +74,18 @@ void loop() {
   }
 
   delay(200);  // Delay for debounce
+}
+
+void callback(char* topicChar, byte* payload, unsigned int length) {
+  String topic = (String)topicChar;
+  String message = "";
+
+  for (int i = 0; i < length; i++) {
+    message += (char)payload[i];
+  }
+
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  Serial.println(message);
 }
