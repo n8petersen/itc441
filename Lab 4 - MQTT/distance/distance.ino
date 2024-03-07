@@ -81,31 +81,22 @@ void loop() {
 
   if (green > distance && distance >= yellow) {
     newColor = "green";
-    // mqttClient.publish("/lights", "green");
-    // toggle = true;
   }
 
   else if (yellow > distance && distance >= red) {
     newColor = "yellow";
-    // mqttClient.publish("/lights", "yellow");
-    // toggle = true;
   }
 
   else if (red > distance && distance >= blink_red) {
     newColor = "red";
-    // mqttClient.publish("/lights", "red");
-    // toggle = true;
   }
 
   else if (blink_red > distance && distance > 0) {
     newColor = "blink";
-    // mqttClient.publish("/lights", "blink");
   }
 
   else {
     newColor = "off";
-    // mqttClient.publish("/lights", "off");
-    // toggle = true;
   }
 
   if (newColor != currColor) {
@@ -117,17 +108,17 @@ void loop() {
 }
 
 void callback(char* topicChar, byte* payload, unsigned int length) {
-  String topic = (String)topicChar;  // Convert the char* to a String
+  String topic = (String)topicChar;
   String message = "";
 
-  for (int i = 0; i < length; i++) {  // For each character of the payload
-    message += (char)payload[i];      // append to the message string
+  for (int i = 0; i < length; i++) {
+    message += (char)payload[i];
   }
 
-  Serial.print("Message arrived [");  // Serial Debug
-  Serial.print(topic);                //    Print the topic name [in brackets]
-  Serial.print("] ");                 //
-  Serial.println(message);            //    And the message
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  Serial.println(message); 
 
   if (topic == (String)doorTopic) {
     if (message == "open") {

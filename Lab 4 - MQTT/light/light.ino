@@ -95,52 +95,20 @@ void loop() {
       digitalWrite(redLED, redblinkon);
     }
   }
-
-
-  // if (mqtt_color == "red") {
-  //   turnLED("red");
-  //   timerOn = false;
-  //   // redblinkon = false;
-  // }
-
-  // if (mqtt_color == "yellow") {
-  //   turnLED("yellow");
-  //   timerOn = false;
-  //   // redblinkon = false;
-  // }
-
-  // if (mqtt_color == "green") {
-  //   turnLED("green");
-  //   timerOn = false;
-  //   // redblinkon = false;
-  // }
-
-  // if (mqtt_color == "off") {
-  //   turnLED();
-  //   timerOn = false;
-  //   // redblinkon = false;
-  // }
-
-  // if (mqtt_color == "blink") {
-  //   if (!timerOn) {
-  //     timerOn = true;
-  //   }
-  // }
-  // delay(10);
 }
 
 void callback(char* topicChar, byte* payload, unsigned int length) {
-  String topic = (String)topicChar;  // Convert the char* to a String
+  String topic = (String)topicChar;
   String message = "";
 
-  for (int i = 0; i < length; i++) {  // For each character of the payload
-    message += (char)payload[i];      // append to the message string
+  for (int i = 0; i < length; i++) {
+    message += (char)payload[i];
   }
 
-  Serial.print("Message arrived [");  // Serial Debug
-  Serial.print(topic);                //    Print the topic name [in brackets]
-  Serial.print("] ");                 //
-  Serial.println(message);            //    And the message
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  Serial.println(message);
 
   if (topic == (String)ledTopic) {
     if (message == "red") {
