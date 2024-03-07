@@ -86,13 +86,15 @@ void loop() {
 
   // // run the timer if it is turned on
   if (timerOn) {
-    Serial.print("T");  // used for debugging to ensure it was actually on
+    // Serial.print("T");  // used for debugging to ensure it was actually on
     unsigned long currentMillis = millis();
     if (currentMillis - previousMillis >= interval) {
       previousMillis = currentMillis;
       turnLED();
       redblinkon = !redblinkon;
       digitalWrite(redLED, redblinkon);
+      digitalWrite(yellowLED, redblinkon);
+      digitalWrite(greenLED, redblinkon);
     }
   }
 }
