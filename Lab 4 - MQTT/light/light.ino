@@ -5,7 +5,7 @@
 // Wifi + Broker Info
 const char* ssid = "nathan";
 const char* password = "ilikepizza123";
-const char* server = "192.168.137.1";
+const char* server = "192.168.137.2";
 const char* ledTopic = "/lights";
 const char* host = "arduino-lights";  // Create hostname for this device
 
@@ -97,6 +97,8 @@ void loop() {
       digitalWrite(greenLED, redblinkon);
     }
   }
+
+  delay (200);
 }
 
 void callback(char* topicChar, byte* payload, unsigned int length) {

@@ -5,7 +5,7 @@
 // Wifi + Broker Info
 const char* ssid = "nathan";
 const char* password = "ilikepizza123";
-const char* server = "192.168.137.1";
+const char* server = "192.168.137.2";
 const char* ledTopic = "/lights";
 const char* doorTopic = "/garage";
 const char* host = "arduino-distance";  // Create hostname for this device
@@ -96,7 +96,6 @@ void loop() {
     else {
       newColor = "off";
     }
-    delay(100);
 
   } else {
     newColor = "off";
@@ -106,6 +105,7 @@ void loop() {
     mqttClient.publish("/lights", newColor);
     currColor = newColor;
   }
+  delay(200);
 }
 
 void callback(char* topicChar, byte* payload, unsigned int length) {

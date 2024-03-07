@@ -4,7 +4,7 @@
 // Wifi + Broker Info
 const char* ssid = "nathan";
 const char* password = "ilikepizza123";
-const char* server = "192.168.137.1";
+const char* server = "192.168.137.2";
 const char* ledTopic = "/lights";
 const char* doorTopic = "/garage";
 const char* host = "arduino-garage";  // Create hostname for this device
@@ -71,6 +71,5 @@ void loop() {
 
   }
 
-
-  delay(100);  // Delay for debounce
+  delay(200);  // Delay for debounce
 }
